@@ -2,6 +2,8 @@
 
 Tài liệu này dành cho trợ lý AI (Claude Code, Codex, Antigravity hoặc AI khác làm việc được với file trên máy). Người dùng đã gửi kèm đoạn mã Clerk của họ và nhờ bạn gắn cửa đăng nhập vào website trong thư mục đang mở. Người dùng thường không biết kỹ thuật: làm hết phần kỹ thuật, chỉ hỏi khi thật sự cần, báo cáo bằng lời thường.
 
+Đọc nguyên văn toàn bộ tài liệu này trước khi làm. Nếu công cụ đọc web của bạn chỉ trả về bản tóm tắt, hãy tải nguyên file về (ví dụ bằng `curl`) rồi đọc, vì đoạn mã ở Bước 3 phải chép đúng từng ký tự.
+
 Kết quả cần đạt: mở website trên máy qua địa chỉ localhost thì người chưa đăng nhập chỉ thấy khung đăng nhập của Clerk; đăng nhập xong thấy toàn bộ trang, có nút tròn ở góc trên bên phải để đăng xuất.
 
 ## Bước 1. Kiểm tra đoạn mã người dùng gửi
@@ -14,7 +16,7 @@ Kết quả cần đạt: mở website trên máy qua địa chỉ localhost th�
 
 1. Tìm mọi file `.html` trong thư mục đang mở và các thư mục con. Bỏ qua thư mục thư viện: `node_modules`, `vendor`, `.git`, `dist`, `build`.
 2. Nếu thư mục là dự án dựng bằng công cụ (có `package.json` dùng React, Next.js, Vue, Astro...) thì dừng: hướng dẫn này chỉ dành cho website HTML thường. Báo người dùng và gợi ý dùng hướng dẫn Clerk riêng cho công cụ đó.
-3. Liệt kê cho người dùng danh sách file sẽ sửa.
+3. Ghi lại danh sách file sẽ sửa để báo cuối việc. Không cần dừng chờ người dùng duyệt danh sách, họ đã nhờ bạn làm.
 4. Sao lưu: chép cả thư mục website sang một thư mục cùng cấp, tên là tên thư mục cũ thêm `-ban-goc` (ví dụ `landing-page-ban-goc`). Đã có thư mục sao lưu thì không chép đè.
 
 ## Bước 3. Gắn mã vào từng trang
@@ -61,7 +63,7 @@ window.addEventListener('load', async () => {
 </script>
 ```
 
-Ghi file bằng mã hoá UTF-8 để chữ tiếng Việt trong trang không bị lỗi.
+Ghi file bằng mã hoá UTF-8 để chữ tiếng Việt trong trang không bị lỗi, và giữ nguyên kiểu xuống dòng sẵn có của file.
 
 ## Bước 4. Đếm lại
 
@@ -71,7 +73,7 @@ Ghi file bằng mã hoá UTF-8 để chữ tiếng Việt trong trang không b�
 
 1. Không mở file trực tiếp kiểu `file://`, Clerk không chạy được như vậy.
 2. Chạy một máy chủ tĩnh tại thư mục website, dùng công cụ có sẵn trên máy, ví dụ `npx --yes http-server -p 8080 -c-1` hoặc `python -m http.server 8080`. Cổng 8080 bận thì đổi cổng khác.
-3. Mở thử địa chỉ, chắc chắn trang trả về được.
+3. Mở thử địa chỉ, chắc chắn trang trả về được. Nếu bạn có công cụ điều khiển trình duyệt, mở trang lên xem khung đăng nhập của Clerk có hiện ra không.
 
 ## Bước 6. Báo cho người dùng
 
