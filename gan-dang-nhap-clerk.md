@@ -11,7 +11,8 @@ Kết quả cần đạt: mở tên miền của website thì người chưa đ�
 1. Đoạn mã đúng có 2 thẻ `<script>`, một thẻ chứa `data-clerk-publishable-key="pk_..."`. Thiếu thẻ đó thì dừng, nhờ người dùng sao chép lại ở Clerk: Configure, API keys, khung Quick copy, chọn JavaScript, bấm nút sao chép.
 2. Khoá phải bắt đầu bằng `pk_live_` (mã chạy thật). Phần sau `pk_live_` là chuỗi base64 của `clerk.<tên miền>$`: giải mã ra để biết tên miền Clerk đã khai, rồi so với tên miền của website (xem file `CNAME` trong thư mục nếu có, hoặc hỏi người dùng). Hai tên miền phải trùng nhau, hoặc website là tên miền con của tên miền đó.
 3. Khoá bắt đầu bằng `pk_test_` là mã chạy thử: chỉ chạy trên máy, không đăng nhập được trên tên miền thật. Dừng và nhờ người dùng chuyển Clerk sang Production (nút ghi Development ở thanh trên cùng, chọn Production) rồi sao chép lại mã.
-4. Nếu người dùng gửi nhầm khoá bắt đầu bằng `sk_` (khoá bí mật): không dùng, không ghi vào file nào, khuyên họ vào Clerk tạo khoá bí mật mới và xoá khoá cũ vì khoá đã lộ.
+4. Mở thử `https://<tên miền website>`. Clerk chạy thật chỉ hoạt động trên địa chỉ https. Nếu https chưa mở được (lỗi chứng chỉ) thì vẫn làm tiếp các bước sau, nhưng báo người dùng ngay từ đầu rằng khung đăng nhập chỉ chạy khi có https. Website chạy trên GitHub Pages: vào kho trên GitHub, Settings, Pages, xoá tên miền ở ô Custom domain, bấm Save, gõ lại, bấm Save, chờ GitHub cấp chứng chỉ (vài phút đến vài giờ) rồi đánh dấu ô Enforce HTTPS. Nếu bạn có quyền dùng `gh` trên kho đó và người dùng đồng ý, bạn làm thay được.
+5. Nếu người dùng gửi nhầm khoá bắt đầu bằng `sk_` (khoá bí mật): không dùng, không ghi vào file nào, khuyên họ vào Clerk tạo khoá bí mật mới và xoá khoá cũ vì khoá đã lộ.
 
 ## Bước 2. Tìm website và sao lưu
 
